@@ -9,7 +9,7 @@ In the current scenario, there is too much job posting online and we got daily m
 
 ### Partner
 * Sajal Sharma
-* Contact : 
+* Contact : ssajal1998@gmail.com
 
 ### Methods Used
 * Data Cleaning
@@ -20,6 +20,6 @@ In the current scenario, there is too much job posting online and we got daily m
 
 ### Technologies 
 * Python
-* Jupyter Notebook
+* Jupyter Notebook, Spyder
 * Pandas , Sklearn
 
