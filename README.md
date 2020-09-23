@@ -1,3 +1,3 @@
-# fake_news_description_prediction
+# Fake News Description Prediction
 
-The project is to identify a job description is fraudulent or not.
+The project is to identify the job description is fraudulent or not. This project consist data exploration, data cleaning, training machine learing models.
