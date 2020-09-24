@@ -1,8 +1,11 @@
 ##### Table of Contents
-[Fake News Description Prediction](#headers)  
-[Emphasis](#emphasis)  
-...snip...    
-<a name="headers"/>
+* [Fake News Description Prediction](#headers)  
+* [Objective](#headers)
+* [Partner](#headers)  
+* [Objective](#headers)
+* [Methods Used](#headers)  
+* [Technologies ](#headers)
+
 
 # Fake News Description Prediction
 
