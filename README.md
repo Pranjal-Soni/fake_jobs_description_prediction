@@ -25,4 +25,5 @@ In the current scenario, there is too much job posting online and we got daily m
 
 ## Project Description
 #### Dataset :
-The data is collected from Kaggle fake job description prediction dataset.This dataset contains 18K job descriptions out of which about 800 are fake. The data consists of both textual information and meta-information about the jobs. Data set contains categorical features as well as some features containing text data. A quick overview of the features that dataset have :
+The data is collected from Kaggle fake job description prediction dataset.This dataset contains 18K job descriptions out of which about 800 are fake. The data consists of both textual information and meta-information about the jobs. Data set contains categorical features as well as some features containing text data. A quick overview of the features that dataset have : 
+![features]('../images/features.jpg')
