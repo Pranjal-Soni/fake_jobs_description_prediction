@@ -42,5 +42,5 @@ The dataset is highly imbalanced because it contains 866 fraudulent data and 170
 #### Applying Different Machine Learning Models:
 * Naive Bayes Classifier : Frist we train our model for Naive Baye's classifier. It is a good machine learning model with a probilistic approch. This good for sparse data and handling too many feature. Intinally we are getting auc_roc score, after hyperparameter tuning we are able to get 70% auc_roc score for our model.
 
-* SVM Classifier : Support vector machine classifer is used to draw the decision boundry between fraudulnt and non-fraudulent job discriptions. Initially we are getting 74% roc_auc score for test data after hyperparameter tuning we are able to get 85% roc_auc for the test data.
+* SVM Classifier : Support vector machine classifer is used to draw the decision boundry between fraudulent and non-fraudulent job discriptions. Initially we are getting 74% roc_auc score for test data after hyperparameter tuning we are able to get 85% roc_auc score for the test data.
 
