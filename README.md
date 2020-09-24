@@ -26,4 +26,16 @@ In the current scenario, there is too much job posting online and we got daily m
 ## Project Description
 #### Dataset :
 The data is collected from Kaggle fake job description prediction dataset.This dataset contains 18K job descriptions out of which about 800 are fake. The data consists of both textual information and meta-information about the jobs. Data set contains categorical features as well as some features containing text data. A quick overview of the features that dataset have : 
-![features]('../images/features.jpg')
+![features](https://github.com/Pranjal-Soni/fake_news_description_prediction/blob/master/images/features.JPG)
+
+#### Data Exploration : 
+From the dataset, we can see which industry is offering more jobs, the chart below shows that information
+![Industries Graph](https://github.com/Pranjal-Soni/fake_news_description_prediction/blob/master/images/top_20_industries.png)
+The chart below shows which job functions are more demand among the industries :
+![Job Functions](https://github.com/Pranjal-Soni/fake_news_description_prediction/blob/master/images/top_20_jobs.png)
+
+#### Data Cleaning and Preprocessing :
+The dataset contains numerical and text data both and there are null also there in columns. Mostly numerical columns like telecommuting, has_company_logo, has_question have categorical data and text feature like employment_type, eductaion_requirment etc. So to deal with a categorical feature one-hot encoding is applied for the categorical columns. Preprocessing of text data are being done in several steps. The steps are as follow removing links from text data, lower all text data, remove stop words using nltk library and then check for most important words like which words have more occurrence and which words have less occurrence and according to that remove all non-important words. Finally, I deal with nan values by appending info not given with column name for each column so for categorical features they have one feature. To convert text data into numerical tfidf transformation method is used. Some visulisations after data preprocessing :
+[!Histograms]()
+#### Handling Imbalanced Dataset:
+
