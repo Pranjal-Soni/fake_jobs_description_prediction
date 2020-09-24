@@ -29,13 +29,17 @@ The data is collected from Kaggle fake job description prediction dataset.This d
 ![features](https://github.com/Pranjal-Soni/fake_news_description_prediction/blob/master/images/features.JPG)
 
 #### Data Exploration : 
+
 From the dataset, we can see which industry is offering more jobs, the chart below shows that information
 ![Industries Graph](https://github.com/Pranjal-Soni/fake_news_description_prediction/blob/master/images/top_20_industries.png)
+
 The chart below shows which job functions are more demand among the industries :
 ![Job Functions](https://github.com/Pranjal-Soni/fake_news_description_prediction/blob/master/images/top_20_jobs.png)
 
 #### Data Cleaning and Preprocessing :
 The dataset contains numerical and text data both and there are null also there in columns. Mostly numerical columns like telecommuting, has_company_logo, has_question have categorical data and text feature like employment_type, eductaion_requirment etc. So to deal with a categorical feature one-hot encoding is applied for the categorical columns. Preprocessing of text data are being done in several steps. The steps are as follow removing links from text data, lower all text data, remove stop words using nltk library and then check for most important words like which words have more occurrence and which words have less occurrence and according to that remove all non-important words. Finally, I deal with nan values by appending info not given with column name for each column so for categorical features they have one feature. To convert text data into numerical tfidf transformation method is used. Some visulisations after data preprocessing :
-[!Histograms]()
+![Histograms](https://github.com/Pranjal-Soni/fake_news_description_prediction/blob/master/images/visulise_featues.png)
+
 #### Handling Imbalanced Dataset:
+The dataset is highly imbalanced because it contains 866 fraudulent data and 17014 non-fraudulent data. Fraudulent data is only 5% of the dataset. So if we apply any machine learning algorithm without handling imbalanced data. The model gives us a high accuracy. But the model is not correct or proper. So to handle this problem I used resampling method. In this method oversampling to is used to in training data. What is basically is done that to make 50% ratio of each class we took fraudulent data and resample it of the size of non-fradulent data. Thus each class have an equal ratio in the training data and no more imbalance is there.
 
