@@ -1,3 +1,9 @@
+##### Table of Contents
+[Fake News Description Prediction](#headers)  
+[Emphasis](#emphasis)  
+...snip...    
+<a name="headers"/>
+
 # Fake News Description Prediction
 
 This is a data science project and problem is to identify given job description is fraudulent or not. The dataset is taken from Kaggel and it consists meta-information about 18K job descriptions. We deal with numerical and text features in this project. The project consists of data preprocessing, data analysis, feature engineering, handling imbalanced dataset and hyperparameter tuning.
@@ -38,4 +44,9 @@ The dataset contains numerical and text data both and there are null also there 
 
 #### Handling Imbalanced Dataset:
 The dataset is highly imbalanced because it contains 866 fraudulent data and 17014 non-fraudulent data. Fraudulent data is only 5% of the dataset. So if we apply any machine learning algorithm without handling imbalanced data. The model gives us a high accuracy. But the model is not correct or proper. So to handle this problem I used resampling method. In this method oversampling to is used to in training data. What is basically is done that to make 50% ratio of each class we took fraudulent data and resample it of the size of non-fradulent data. Thus each class have an equal ratio in the training data and no more imbalance is there.
+
+#### Applying Different Machine Learning Models:
+* Naive Bayes Classifier : Frist we train our model for Naive Baye's classifier. It is a good machine learning model with a probilistic approch. This good for sparse data and handling too many feature. Intinally we are getting auc_roc score, after hyperparameter tuning we are able to get 70% auc_roc score for our model.
+
+* SVM Classifier : Support vector machine classifer is used to draw the decision boundry between fraudulnt and non-fraudulent job discriptions. Initially we are getting 74% roc_auc score for test data after hyperparameter tuning we are able to get 85% roc_auc for the test data.
 
