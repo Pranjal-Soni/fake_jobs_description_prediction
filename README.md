@@ -16,8 +16,7 @@ In the current scenario, there is too much job posting online and we got daily m
 * Feature engineering
 * Data Visulisation
 * Machine Learning
-* Deep Learning
-
+* Hyperparameter Tuning
 ### Technologies 
 * Python
 * Jupyter Notebook, Spyder
@@ -47,6 +46,6 @@ The dataset is highly imbalanced because it contains 866 fraudulent data and 170
 * Random Forest Classifier : Random Forest classifier is widly used ensemble machine learning model. Initially random forest is giving 74% roc_auc score and after hyperparameter tuning we get 78% roc_auc score.
 
 #### Result :
-Hyperparameter tuning hepls a lot to improve the accuracy of different models. Naive bayes model has better accuray for fraudulent jobs and it classify more fraudulent jobs correctly, but it also classify a lot of non-fraudulent jobs as fraudulent which is major drawback of naive bayes model for this project. The SVM model is very balanced model and it gives best roc_auc score. It is able to correctly classify most of the fraudulent jobs and non fraudulent and the random forest model is good or classify the non-fradulent jobs. So we can say the svm model is the best it for this problem.
+Hyperparameter tuning hepls a lot to improve the accuracy of different models. Naive bayes model has better accuray for fraudulent jobs and it classify more fraudulent jobs correctly, but it also classify a lot of non-fraudulent jobs as fraudulent which is major drawback of naive bayes model for this project. The SVM model is very balanced model and it gives best roc_auc score. It is able to correctly classify most of the fraudulent jobs and non fraudulent and the random forest model is good for classifying the non-fradulent jobs. So we can say that the svm model is the best fit for this problem.
 
 
