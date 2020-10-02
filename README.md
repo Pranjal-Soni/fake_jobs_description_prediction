@@ -20,7 +20,8 @@ In the current scenario, there is too much job posting online and we got daily m
 ### Technologies 
 * Python
 * Jupyter Notebook, Spyder
-* Pandas , Sklearn
+* Pandas , Sklearn, Numpy
+* Matplotlib, Seaborn
 
 ## Project Description
 #### Dataset :
