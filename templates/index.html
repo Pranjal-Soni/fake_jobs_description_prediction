@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Job Description Predicion</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-size: 15px;
+            background-color :#DAE0E2;
+        }
+
+        p {
+            font-size: 10px;
+        }
+
+        nav {
+            background-color : #2C3335;
+            font-family: 'Merriweather', serif;
+            color: whitesmoke;
+        }
+
+        legend {
+            font-size: 20px;
+        }
+        #submit_btn{
+            margin-top: 30px;
+            width: 150px;
+        }
+        textarea { 
+            font-size: 18px; 
+            height : 200px;
+            width : 500px;
+        }
+        small{
+            font-size : 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav justify-content-center p-3">
+        <h1>FAKE JOB DESCRIPTION PREDICTION</h1>
+    </nav>
+
+    <!-- Form Section to input job description-->
+    <div class="container">
+
+        <form action="{{ url_for('predict')}}" method="POST">
+            <h2 align="center">Enter Job Details :</2>
+
+
+                <!-- <input type="text" name="comment"/> -->
+                <legend>Job Title <small>(If not given fill NULL)</small></legend>
+                <input name="title" type="text" required></input>
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <legend>Description <small>(If not given fill NULL)</small></legend>
+                        <textarea name="description" col="15" required></textarea>
+                    </div>
+                    <div class="col">
+                        <legend>Requirments <small>(If not given fill NULL)</small></legend>
+                        <textarea name="requirment" required></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <legend>Experience Requirment</legend>
+                            <select class="form-control" name="required_experience">
+                                <option value="experience_not_asked">Not Asked</option>
+                                <option value="Internship">Internship</option>
+                                <option value="Entry level">Entry level</option>
+                                <option value="Mid-Senior level">Mid-Senior level</option>
+                                <option value="Associate">Associate</option>
+                                <option value="Executive">Executive</option>
+                                <option value="Director">Director</option>
+                                <option value="Not Applicable">Not Applicable</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <legend>Employment Type</legend>
+                            <select name="employment_type" class="form-control">
+                                <option value="no_info_about_employment">No Information</option>
+                                <option value="Part-time">Part-time</option>
+                                <option value="Full-time">Full-time</option>
+                                <option value="Temporary">Temporary</option>
+                                <option value="Contract">Contract</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <legend>Has Questions ?<small>(Any question asked in description)</small></legend>
+                            <select class="form-control" name="has_questions">
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <legend>Company Have Logo ?<small>(Company have a logo ?)</small></legend>
+                            <select class="form-control" name="company_logo">
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <legend>Work From Avialable </legend>
+                            <select class="form-control" name="telecommuting">
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <legend>Education Requirment</legend>
+                            <select class="form-control" name="required_education">
+                                <option value="Unspecified">Unspecified</option>
+                                <option value="Bachelor's Degree">Bachelor's Degree</option>
+                                <option value="Master's Degree">Master's Degree</option>
+                                <option value="High School or equivalent">High School or equivalent</option>
+                                <option value="Some College Coursework Completed">Some College Coursework Completed
+                                </option>
+                                <option value="Vocational">Vocational</option>
+                                <option value="Certification"">Certification</option>
+                                <option value=" Associate Degree">Associate Degree</option>"
+                                <option value="Professional">Professional</option>
+                                <option value="Doctorate">Doctorate</option>
+                                <option value="Some High School Coursework">Some High School Coursework</option>
+                                <option value="Vocational - Degree">Vocational - Degree</option>
+                                <option value="Vocational - HS Diploma">Vocational - HS Diploma</option>
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <legend>Industry </legend>
+                            <select class="form-control" name="industry">
+                                <option value="industry_not_given">Not Specified</option>
+                                <option value="Marketing and Advertising">Marketing and Advertising</option>
+                                <option value="Computer Software">Computer Software</option>
+                                <option value="Hospital & Health Care">Hospital & Health Care</option>
+                                <option value="Online Media">Online Media</option>
+                                <option value="Information Technology and Services">Information Technology and Services
+                                </option>
+                                <option value="Financial Services">Financial Services</option>
+                                <option value="Management Consulting">Management Consulting</option>
+                                <option value="Events Services">Events Services</option>
+                                <option value="Internet">Internet</option>
+                                <option value="Facilities Services">Facilities Services</option>
+                                <option value="Consumer Electronics">Consumer Electronics</option>
+                                <option value="Telecommunications">Telecommunications</option>
+                                <option value="Consumer Services">Consumer Services</option>
+                                <option value="Construction">Construction</option>
+                                <option value="Oil & Energy">Oil & Energy</option>
+                                <option value="Education Management">Education Management</option>
+                                <option value="Building Materials">Building Materials</option>
+                                <option value="Banking">Banking</option>
+                                <option value="Food & Beverages">Food & Beverages</option>
+                                <option value="Food Production">Food Production</option>
+                                <option value="Health, Wellness and Fitness">Health, Wellness and Fitness</option>
+                                <option value="Insurance">Insurance</option>
+                                <option value="E-Learning">E-Learning</option>
+                                <option value="Cosmetics">Cosmetics</option>
+                                <option value="Staffing and Recruiting">Staffing and Recruiting</option>
+                                <option value="Venture Capital & Private Equity">Venture Capital & Private Equity
+                                </option>
+                                <option value="Leisure, Travel & Tourism">Leisure, Travel & Tourism</option>
+                                <option value="Human Resources">Human Resources</option>
+                                <option value="Pharmaceuticals">Pharmaceuticals</option>
+                                <option value="Farming">Farming</option>
+                                <option value="Legal Services">Legal Services</option>
+                                <option value="Luxury Goods & Jewelry">Luxury Goods & Jewelry</option>
+                                <option value="Machinery">Machinery</option>
+                                <option value="Real Estate">Real Estate</option>
+                                <option value="Mechanical or Industrial Engineering">Mechanical or Industrial
+                                    Engineering</option>
+                                <option value="Public Relations and Communications">Public Relations and Communications
+                                </option>
+                                <option value="Consumer Goods">Consumer Goods</option>
+                                <option value="Medical Practice">Medical Practice</option>
+                                <option value="Electrical/Electronic Manufacturing">Electrical/Electronic Manufacturing
+                                </option>
+                                <option value="Hospitality">Hospitality</option>
+                                <option value="Music">Music</option>
+                                <option value="Market Research">Market Research</option>
+                                <option value="Automotive">Automotive</option>
+                                <option value="Philanthropy">Philanthropy</option>
+                                <option value="Utilities">Utilities</option>
+                                <option value="Primary/Secondary Education">Primary/Secondary Education</option>
+                                <option value="Logistics and Supply Chain">Logistics and Supply Chain</option>
+                                <option value="Design">Design</option>
+                                <option value="Gambling & Casinos">Gambling & Casinos</option>
+                                <option value="Accounting">Accounting</option>
+                                <option value="Environmental Services">Environmental Services</option>
+                                <option value="Mental Health Care">Mental Health Care</option>
+                                <option value="Investment Management">Investment Management</option>
+                                <option value="Apparel & Fashion">Apparel & Fashion</option>
+                                <option value="Media Production">Media Production</option>
+                                <option value="Publishing">Publishing</option>
+                                <option value="Medical Devices">Medical Devices</option>
+                                <option value="Information Services">Information Services</option>
+                                <option value="Retail">Retail</option>
+                                <option value="Sports">Sports</option>
+                                <option value="Computer Games">Computer Games</option>
+                                <option value="Chemicals">Chemicals</option>
+                                <option value="Aviation & Aerospace">Aviation & Aerospace</option>
+                                <option value="Business Supplies and Equipment">Business Supplies and Equipment</option>
+                                <option value="Program Development">Program Development</option>
+                                <option value="Computer Networking">Computer Networking</option>
+                                <option value="Biotechnology">Biotechnology</option>
+                                <option value="Civic & Social Organization">Civic & Social Organization</option>
+                                <option value="Religious Institutions">Religious Institutions</option>
+                                <option value="Warehousing">Warehousing</option>
+                                <option value="Airlines/Aviation">Airlines/Aviation</option>
+                                <option value="Writing and Editing">Writing and Editing</option>
+                                <option value="Restaurants">Restaurants</option>
+                                <option value="Outsourcing/Offshoring">Outsourcing/Offshoring</option>
+                                <option value="Transportation/Trucking/Railroad">Transportation/Trucking/Railroad
+                                </option>
+                                <option value="Wireless">Wireless</option>
+                                <option value="Investment Banking">Investment Banking</option>
+                                <option value="Nonprofit Organization Management">Nonprofit Organization Management
+                                </option>
+                                <option value="Libraries">Libraries</option>
+                                <option value="Computer Hardware">Computer Hardware</option>
+                                <option value="Broadcast Media">Broadcast Media</option>
+                                <option value="Printing">Printing</option>
+                                <option value="Graphic Design">Graphic Design</option>
+                                <option value="Entertainment">Entertainment</option>
+                                <option value="Wholesale">Wholesale</option>
+                                <option value="Research">Research</option>
+                                <option value="Animation">Animation</option>
+                                <option value="Government Administration">Government Administration</option>
+                                <option value="Capital Markets">Capital Markets</option>
+                                <option value="Computer & Network Security">Computer & Network Security</option>
+                                <option value="Semiconductors">Semiconductors</option>
+                                <option value="Security and Investigations">Security and Investigations</option>
+                                <option value="Architecture & Planning">Architecture & Planning</option>
+                                <option value="Maritime">Maritime</option>
+                                <option value="Fund-Raising">Fund-Raising</option>
+                                <option value="Higher Education">Higher Education</option>
+                                <option value="Renewables & Environment">Renewables & Environment</option>
+                                <option value="Motion Pictures and Film">Motion Pictures and Film</option>
+                                <option value="Law Practice">Law Practice</option>
+                                <option value="Government Relations">Government Relations</option>
+                                <option value="Packaging and Containers">Packaging and Containers</option>
+                                <option value="Sporting Goods">Sporting Goods</option>
+                                <option value="Mining & Metals">Mining & Metals</option>
+                                <option value="Import and Export">Import and Export</option>
+                                <option value="International Trade and Development">International Trade and Development
+                                </option>
+                                <option value="Professional Training & Coaching">Professional Training & Coaching
+                                </option>
+                                <option value="Textiles">Textiles</option>
+                                <option value="Commercial Real Estate">Commercial Real Estate</option>
+                                <option value="Law Enforcement">Law Enforcement</option>
+                                <option value="Package/Freight Delivery">Package/Freight Delivery</option>
+                                <option value="Translation and Localization">Translation and Localization</option>
+                                <option value="Photography">Photography</option>
+                                <option value="Industrial Automation">Industrial Automation</option>
+                                <option value="Wine and Spirits">Wine and Spirits</option>
+                                <option value="Public Safety">Public Safety</option>
+                                <option value="Civil Engineering">Civil Engineering</option>
+                                <option value="Military">Military</option>
+                                <option value="Defense & Space">Defense & Space</option>
+                                <option value="Veterinary">Veterinary</option>
+                                <option value="Executive Office">Executive Office</option>
+                                <option value="Performing Arts">Performing Arts</option>
+                                <option value="Individual & Family Services">Individual & Family Services</option>
+                                <option value="Public Policy">Public Policy</option>
+                                <option value="Nanotechnology">Nanotechnology</option>
+                                <option value="Museums and Institutions">Museums and Institutions</option>
+                                <option value="Fishery">Fishery</option>
+                                <option value="Plastics">Plastics</option>
+                                <option value="Furniture">Furniture</option>
+                                <option value="Shipbuilding">Shipbuilding</option>
+                                <option value="Alternative Dispute Resolution">Alternative Dispute Resolution</option>
+                                <option value="Ranching">Ranching</option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <legend>Job Function</legend>
+                            <select class="form-control" name="function">
+                                <option value="function_not_given">Not Specified</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Customer Service">Customer Service</option>
+                                <option value="Sales">Sales</option>
+                                <option value="Health Care Provider">Health Care Provider</option>
+                                <option value="Management">Management</option>
+                                <option value="Information Technology">Information Technology</option>
+                                <option value="Other">Other</option>
+                                <option value="Engineering">Engineering</option>
+                                <option value="Administrative">Administrative</option>
+                                <option value="Design">Design</option>
+                                <option value="Production">Production</option>
+                                <option value="Education">Education</option>
+                                <option value="Supply Chain">Supply Chain</option>
+                                <option value="Business Development">Business Development</option>
+                                <option value="Product Management">Product Management</option>
+                                <option value="Financial Analyst">Financial Analyst</option>
+                                <option value="Consulting">Consulting</option>
+                                <option value="Human Resources">Human Resources</option>
+                                <option value="Project Management">Project Management</option>
+                                <option value="Manufacturing">Manufacturing</option>
+                                <option value="Public Relations">Public Relations</option>
+                                <option value="Strategy/Planning">Strategy/Planning</option>
+                                <option value="Advertising">Advertising</option>
+                                <option value="Finance">Finance</option>
+                                <option value="General Business">General Business</option>
+                                <option value="Research">Research</option>
+                                <option value="Accounting/Auditing">Accounting/Auditing</option>
+                                <option value="Art/Creative">Art/Creative</option>
+                                <option value="Quality Assurance">Quality Assurance</option>
+                                <option value="Data Analyst">Data Analyst</option>
+                                <option value="Business Analyst">Business Analyst</option>
+                                <option value="Writing/Editing">Writing/Editing</option>
+                                <option value="Distribution">Distribution</option>
+                                <option value="Science">Science</option>
+                                <option value="Training">Training</option>
+                                <option value="Purchasing">Purchasing</option>
+                                <option value="Legal">Legal</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <input type="submit" class="btn btn-primary btn-lg p-2" id="submit_btn" value="Predict">
+
+                
+        </form>
+
+    </div>
+    <footer>
+
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>
