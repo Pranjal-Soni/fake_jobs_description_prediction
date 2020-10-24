@@ -16,12 +16,12 @@ In the current scenario, there is too much job posting online and we got daily m
 * Feature engineering
 * Data Visulisation
 * Machine Learning
-* Deep Learning
-
+* Hyperparameter Tuning
 ### Technologies 
 * Python
 * Jupyter Notebook, Spyder
-* Pandas , Sklearn
+* Pandas , Sklearn, Numpy
+* Matplotlib, Seaborn
 
 ## Project Description
 #### Dataset :
@@ -33,7 +33,7 @@ From the dataset, we can see which industry is offering more jobs, the chart bel
 ![Industries Graph](https://github.com/Pranjal-Soni/fake_news_description_prediction/blob/master/images/top_20_industries.png)
 
 #### Data Cleaning and Preprocessing :
-The dataset contains numerical and text data both and there are null also there in columns. Mostly numerical columns like telecommuting, has_company_logo, has_question have categorical data and text feature like employment_type, eductaion_requirment etc. So to deal with a categorical feature one-hot encoding is applied for the categorical columns. Preprocessing of text data are being done in several steps. The steps are as follow removing links from text data, lower all text data, remove stop words using nltk library and then check for most important words like which words have more occurrence and which words have less occurrence and according to that remove all non-important words. Finally, I deal with nan values by appending info not given with column name for each column so for categorical features they have one feature. To convert text data into numerical tfidf transformation method is used. Some visulisations after data preprocessing :
+The dataset contains numerical and text data both and there are null also in columns. Mostly numerical columns like telecommuting, has_company_logo, has_question have categorical data and text feature like employment_type, eductaion_requirment etc. So to deal with a categorical feature one-hot encoding is applied for the categorical columns. Preprocessing of text data are being done in several steps. The steps are as follow removing links from text data, lower all text data, remove stop words using nltk library and then check for most important words like which words have more occurrence and which words have less occurrence and according to that remove all non-important words. Finally, I deal with nan values by appending info not given with column name for each column so for categorical features they have one feature. To convert text data into numerical tfidf transformation method is used. Some visulisations after data preprocessing :
 ![Histograms](https://github.com/Pranjal-Soni/fake_news_description_prediction/blob/master/images/visualise_featues.png)
 
 #### Handling Imbalanced Dataset:
@@ -43,4 +43,10 @@ The dataset is highly imbalanced because it contains 866 fraudulent data and 170
 * Naive Bayes Classifier : Frist we train our model for Naive Baye's classifier. It is a good machine learning model with a probilistic approch. This good for sparse data and handling too many feature. Intinally we are getting auc_roc score, after hyperparameter tuning we are able to get 70% auc_roc score for our model.
 
 * SVM Classifier : Support vector machine classifer is used to draw the decision boundry between fraudulent and non-fraudulent job discriptions. Initially we are getting 74% roc_auc score for test data after hyperparameter tuning we are able to get 85% roc_auc score for the test data.
+
+* Random Forest Classifier : Random Forest classifier is widly used ensemble machine learning model. Initially random forest is giving 74% roc_auc score and after hyperparameter tuning we get 78% roc_auc score.
+
+#### Result :
+Hyperparameter tuning hepls a lot to improve the accuracy of different models. Naive bayes model has better accuray for fraudulent jobs and it classify more fraudulent jobs correctly, but it also classify a lot of non-fraudulent jobs as fraudulent which is major drawback of naive bayes model for this project. The SVM model is very balanced model and it gives best roc_auc score. It is able to correctly classify most of the fraudulent jobs and non fraudulent and the random forest model is good for classifying the non-fradulent jobs. So we can say that the svm model is the best fit for this problem.
+
 
