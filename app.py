@@ -84,6 +84,8 @@ def edu_list(param):
     elif param == "Vocational - HS Diploma":
         arr[12] = 1
         return arr
+    else:
+        return arr
 
 def employment_list(param):
     arr = [0,0,0,0,0,0]
@@ -104,6 +106,8 @@ def employment_list(param):
         return arr
     elif param == "no_info_about_employment":
         arr[5] = 1
+        return arr
+    else:
         return arr
 
 def experience_list(param):
@@ -131,6 +135,8 @@ def experience_list(param):
         return arr
     elif param == "experience_not_asked":
         arr[7] = 1
+        return arr
+    else:
         return arr
 
 def function_list(param):
@@ -249,6 +255,8 @@ def function_list(param):
         return arr
     elif param == "function_not_given":
         arr[37] = 1
+        return arr
+    else:
         return arr
 
 
@@ -651,8 +659,10 @@ def industry_list(param):
     elif param == "industry_not_given":
         arr[131] = 1
         return arr
+    else:
+        return arr
 
-def preaper_data(title,description,requirment,required_experience,employment_type,has_questions
+def preaper_data(clean_desc,required_experience,employment_type,has_questions
             ,company_logo,telecommuting,required_education,industry,function):
     
     result = []
@@ -664,20 +674,7 @@ def preaper_data(title,description,requirment,required_experience,employment_typ
     result = result + experience_list(required_experience)
     result = result +  industry_list(industry)
     result = result + function_list(function)
-    
-    desc = title + description+requirment
-    clean_desc = clean(desc)
-
     result = result + list(clean_desc)
-    #experience = experience_list(required_experience)
-    #employment = employment_list(employment_type)
-    #que = [int(has_questions)]
-    #logo = [int(company_logo)]
-    #tele = [int(telecommuting)]
-    #edu = edu_list(required_education)
-    #indus = industry_list(industry)
-    #func = function_list(function)
-
     return pd.Series(result)
 
 
@@ -699,9 +696,15 @@ def predict():
         required_education = request.form['required_education']
         industry = request.form['industry']
         function = request.form['function']
-        data = preaper_data(title,description,requirment,required_experience,employment_type,has_questions
-            ,company_logo,telecommuting,required_education,industry,function)
-        predict = model.predict(data.values.reshape(1,-1))
+        desc = title + description+requirment
+        clean_desc = clean(desc)
+
+        if len(set(clean_desc)) == 1:
+            predict = [1]
+        else:
+            data = preaper_data(clean_desc,required_experience,employment_type,has_questions
+                ,company_logo,telecommuting,required_education,industry,function)
+            predict = model.predict(data.values.reshape(1,-1))
         return render_template('result.html',prediction = predict)
 
 if __name__=="__main__":
